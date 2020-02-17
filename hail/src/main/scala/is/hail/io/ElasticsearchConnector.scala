@@ -1,7 +1,7 @@
 package is.hail.io
 
 import org.apache.spark
-import org.elasticsearch.spark.sql._
+import org.elasticsearch.spark._
 
 import scala.collection.JavaConverters._
 import scala.collection.Map
@@ -41,6 +41,6 @@ object ElasticsearchConnector {
     if (verbose)
       println(s"Config ${ mergedConfig }")
 
-    df.saveToEs(s"${ index }/${ indexType }", mergedConfig)
+    df.rdd.saveToEs(s"${ index }/${ indexType }", mergedConfig)
   }
 }
